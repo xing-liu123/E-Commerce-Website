@@ -11,7 +11,7 @@ app.use(cors());
 app.use("/user", userRouter);
 
 mongoose.connect(
-  "mongodb+srv://lx530189283:ecommercewebsite@ecommerce.ttx5coy.mongodb.net//E-Commerce-Website"
+  "mongodb+srv://lx530189283:ecommercewebsite@ecommerce.ttx5coy.mongodb.net/E-Commerce-Website"
 );
 
 app.listen(3001, () => console.log("SERVER STARTED"));
