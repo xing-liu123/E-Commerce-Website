@@ -2,6 +2,7 @@ import { useState, SyntheticEvent } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { UserErrors } from "../../errors";
+import { useNavigate } from "react-router-dom";
 
 export const AuthPage = () => {
   return (
@@ -67,6 +68,7 @@ const Login = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [_, setCookies] = useCookies(["access_token"]);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault();
@@ -77,6 +79,7 @@ const Login = () => {
       });
       setCookies("access_token", result.data.token);
       localStorage.setItem("userID", result.data.userID);
+      navigate("/");
     } catch (err) {
       let errorMessage: string = "";
       switch (err.response.data.type) {
@@ -89,7 +92,7 @@ const Login = () => {
         default:
           errorMessage = "Something went wrong.";
       }
-      
+
       alert("ERROR: " + errorMessage);
     }
   };
