@@ -16,7 +16,7 @@ router.get("/", verifyToken, async (_, res: Response) => {
   }
 });
 
-router.post("/checkout", async (req: Request, res: Response) => {
+router.post("/checkout", verifyToken, async (req: Request, res: Response) => {
     const { customerID, cartItems } = req.body;
     try {
       const user = await UserModel.findById(customerID);
