@@ -26,7 +26,7 @@ const Register = () => {
       });
       alert("Registration Completed!");
     } catch (err) {
-      if (err?.response?.data?.type === UserErrors.USERNAME_ALREADY_EXISTS) {
+      if (err.response.data.type === UserErrors.USERNAME_ALREADY_EXISTS) {
         alert("ERROR: Username already in use.");
       } else {
         alert("ERROR: Something went wrong.");
